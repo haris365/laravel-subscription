@@ -1,0 +1,33 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Checkout') }}</div>
+
+                <div class="card-body">
+
+                <x:card-form :action="route('subscriptions.store')">
+
+                    <input type="hidden" name="plan" value="{{request('plan')}}">
+
+                    <div class="form-group">
+                        <label for="coupon">Coupon</label>
+                        <input type="text" id="coupon" name="coupon" class="form-control"></input>
+
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="card-button" data-secret="{{$client->client_secret}}">Pay</button>
+                </x:card-form>
+                                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
